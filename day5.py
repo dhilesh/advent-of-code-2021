@@ -32,22 +32,21 @@ def get_line_points(p0,p1):
 
     return points
 
-all_points = [get_line_points(x[0],x[1]) for x in [c[0]]]
+def get_ans1():
+    all_points = [get_line_points(x[0],x[1]) for x in horizontal_and_vertical]
+    all_points = [','.join(x) for sublist in all_points for x in sublist]
+    overlap_count = Counter(all_points)
+    ans1 = len([x for x in overlap_count.items() if x[1]>1])
+    print(ans1) # 5145
 
-all_points = [get_line_points(x[0],x[1]) for x in horizontal_and_vertical]
-all_points = [','.join(x) for sublist in all_points for x in sublist]
-overlap_count = Counter(all_points)
-ans1 = len([x for x in overlap_count.items() if x[1]>1])
-ans1 # 5145
+def get_ans2():
+    all_points = [get_line_points(x[0],x[1]) for x in c]
+    all_points = [','.join(x) for sublist in all_points for x in sublist]
+    all_points
+    overlap_count = Counter(all_points)
+    ans2 = len([x for x in overlap_count.items() if x[1]>1])
+    print(ans2) # 16518
 
-all_points = [get_line_points(x[0],x[1]) for x in c]
-all_points = [','.join(x) for sublist in all_points for x in sublist]
-all_points
-overlap_count = Counter(all_points)
-ans2 = len([x for x in overlap_count.items() if x[1]>1])
-ans2 # 16518
-
-
-
-
-
+if __name__ == '__main__':
+    get_ans1()
+    get_ans2()
